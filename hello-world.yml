@@ -1,13 +1,24 @@
+resources:
+- name: time-trigger
+  type: time
+  source:
+    interval: 1m  # Adjust as needed (e.g., '10s', '5m', '1h')
+
 jobs:
-  - name: hello-world
-    plan:
-      - task: say-hello
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source:
-              repository: alpine
-          run:
-            path: echo
-            args: ["Hi!"]
+- name: hello-world-job
+  plan:
+    - get: time-trigger
+      trigger: true
+    - task: run-hello-world
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source:
+            repository: alpine
+        run:
+          path: sh
+          args:
+            - -exc
+            - |
+              echo "Hello from the newly created pipeline!"
