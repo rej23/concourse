@@ -10,4 +10,4 @@ jobs:
               repository: alpine
           run:
             path: echo
-            args: ["Helloooooooooooooooo!"]
+            args: ["Hi!"]
