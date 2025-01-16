@@ -2,7 +2,7 @@ resources:
 - name: time-trigger
   type: time
   source:
-    interval: 1m  # Adjust as needed (e.g., '10s', '5m', '1h')
+    interval: 1m  
 
 jobs:
 - name: hello-world-job
@@ -21,4 +21,4 @@ jobs:
           args:
             - -exc
             - |
-              echo "Hello from the newly created pipeline!"
+              echo "Hello world!"
